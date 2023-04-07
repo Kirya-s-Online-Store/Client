@@ -16,6 +16,9 @@ export default class ProductStore {
         this._products = [
             {id: 1, name: 'iphone 13 pro max', price: 3100, img: "./img/Apple_iPhone-13.jpg"}
         ]
+
+        this._selectedType = {}
+        this._selectedBrand = {}
         makeAutoObservable(this)
     }
 
@@ -26,8 +29,17 @@ export default class ProductStore {
     setBrands(brands) {
         this._brands = brands
     }
+
     setProducts(products) {
         this._products = products
+    }
+
+    setSelectedType(type) {
+        this._selectedType = type
+    }
+
+    setSelectedBrand(brand) {
+        this._selectedBrand = brand
     }
 
     get types() {
@@ -40,5 +52,13 @@ export default class ProductStore {
 
     get products() {
         return this._products
+    }
+
+    get selectedType(){
+        return this._selectedType
+    }
+
+    get selectedBrand() {
+        return this._selectedBrand
     }
 }
