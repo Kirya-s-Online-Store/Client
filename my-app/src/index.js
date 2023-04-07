@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import UserStore from './store/UserStore';
 import ProductStore from './store/ProductStore';
+// Importing the Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const Context = createContext(null)
 const root = ReactDOM.createRoot(document.getElementById('root'));

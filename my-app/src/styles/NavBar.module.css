@@ -1,0 +1,9 @@
+.logo {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.logo:hover{
+    color: #fff;
+}
