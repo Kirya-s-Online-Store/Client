@@ -14,7 +14,11 @@ export default class ProductStore {
         ]
 
         this._products = [
-            {id: 1, name: 'iphone 13 pro max', price: 3100, img: "./img/Apple_iPhone-13.jpg"}
+            {id: 1, name: 'iphone 13 pro max', price: 3100, img: "./img/product-imgs/Apple_iPhone-13.jpg"},
+            {id: 2, name: 'iphone 14 pro max', price: 3600, img: "./img/product-imgs/Apple_iPhone-13.jpg"},
+            {id: 3, name: 'iphone 12 pro max', price: 2500, img: "./img/product-imgs/Apple_iPhone-13.jpg"},
+            {id: 4, name: 'iphone 12 pro max', price: 2500, img: "./img/product-imgs/Apple_iPhone-13.jpg"},        
+            {id: 5, name: 'iphone 12 pro max', price: 2500, img: "./img/product-imgs/Apple_iPhone-13.jpg"}        
         ]
 
         this._selectedType = {}
