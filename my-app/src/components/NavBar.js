@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { ADMIN_ROUTE, BASKET_ROUTE, SHOP_ROUTE } from '../utils/consts';
+import { ADMIN_ROUTE, BASKET_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from '../utils/consts';
 import styles from '../styles/NavBar.module.css';
 import { observer } from 'mobx-react-lite'
 
@@ -24,12 +24,12 @@ const NavBar = observer( () => {
           {user.isAuth ?
             <Nav className="ml-auto">
                 <Button variant="outline-light" onClick={() => navigate(ADMIN_ROUTE)}>Админ панель</Button>
-                <Button variant="outline-light" onClick={() => navigate(BASKET_ROUTE)}>Корзина</Button>
-                <Button variant="outline-light">Выйти</Button>
+                <Button variant="outline-light" onClick={() => navigate(BASKET_ROUTE)} className='ml-2'>Корзина</Button>
+                <Button variant="outline-light" onClick={() => navigate(LOGIN_ROUTE)} className='ml-2'>Выйти</Button>
             </Nav>
             :
             <Nav className="ml-auto">
-                <Button variant="outline-light" onClick = {() => user.setIsAuth(true)}>Авторизация</Button>
+                <Button variant="outline-light" onClick = {() => user.setIsAuth()}>Авторизация</Button>
             </Nav>
           }
         </Container>
