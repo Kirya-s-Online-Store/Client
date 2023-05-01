@@ -23,6 +23,7 @@ export default class ProductStore {
 
         this._selectedType = {}
         this._selectedBrand = {}
+        this._productsInBasket = []
         makeAutoObservable(this)
     }
 
@@ -46,6 +47,16 @@ export default class ProductStore {
         this._selectedBrand = brand
     }
 
+    setProductsInBasket(products) {
+        this._productsInBasket = products;
+    }
+
+    addProductInBasket(product) {
+
+        this._productsInBasket.push(product);
+        
+    }
+    
     get types() {
         return this._types
     }
@@ -64,5 +75,9 @@ export default class ProductStore {
 
     get selectedBrand() {
         return this._selectedBrand
+    }
+
+    get productsInBasket() {
+        return this._productsInBasket;
     }
 }
