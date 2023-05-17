@@ -7,6 +7,7 @@ import { Context } from '..'
 function ProductPage() {
   const product_1 = {id: 1, name: 'iphone 13 pro max', price: 3100, img: "./img/product-imgs/Apple_iPhone-13.jpg"}
   const { product } = useContext(Context)
+  const { user } = useContext(Context)
   console.log({product})
   const description = [
     {id: 1, title: 'Оперативная память',description: '5 гб'},
@@ -25,7 +26,7 @@ function ProductPage() {
           <Card className='d-flex flex-column align-items-center justify-content-around text-align-center' style={{width: 'auto', height: 400, fontSize: 32}} border='primary'>
             <div>{product_1.name}</div>
             <h3>{product_1.price} BYN</h3>
-            <Button onClick={() => {product.addProductInBasket(product_1)}}>Добавить в корзину</Button>
+            {user.isAuth && <Button onClick={() => {product.addProductInBasket(product_1)}}>Добавить в корзину</Button>}
           </Card>
         </Col>
       </Row>

@@ -4,6 +4,7 @@ import Image from 'react-bootstrap/Image'
 import { useNavigate } from "react-router-dom"
 import { PRODUCT_ROUTE } from '../utils/consts'
 
+
 const ProductItem = ({product}) => {
   const navigate = useNavigate()
   return(

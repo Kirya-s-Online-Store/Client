@@ -7,15 +7,18 @@ import Shop from "./pages/Shop";
 
 export const authRoutes = [
     {
-        path: ADMIN_ROUTE,
-        Component: Admin
-    },
-    
-    {
         path: BASKET_ROUTE,
         Component: Basket
     }
 ]
+
+export const adminRoutes = [
+    {
+        path: ADMIN_ROUTE,
+        Component: Admin
+    }
+]
+
 
 export const publicRoutes = [
     {
