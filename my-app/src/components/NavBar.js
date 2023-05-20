@@ -10,6 +10,7 @@ import styles from '../styles/NavBar.module.css';
 import { observer } from 'mobx-react-lite'
 
 
+
 const NavBar = observer( () => {
 
   const {user} = useContext(Context)
@@ -17,13 +18,14 @@ const NavBar = observer( () => {
   const logOut = () => {
     user.setUser({})
     user.setIsAuth(false)
+    user.setIsAdmin(false)
+    localStorage.setItem('token', null)
   }
     
   return (
     <Navbar bg="primary" variant="dark">
         <Container>
           <NavLink className={styles.logo} to={SHOP_ROUTE}>Kyrya's Store</NavLink>
-          
           {user.isAuth ?
             <Nav className="ml-auto">
                 {user.isAdmin && <Button variant="outline-light" onClick={() => navigate(ADMIN_ROUTE)}>Админ панель</Button>}

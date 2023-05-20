@@ -9,10 +9,10 @@ const App = observer(()=> {
   const {user} = useContext(Context)
   useEffect(()=>{
     check().then(data => {
-      user.setUser(true)
+      user.setUser(data)
       user.setIsAuth(true)
     })
-  })
+  }, [])
   return (
     <BrowserRouter>
       <NavBar/>

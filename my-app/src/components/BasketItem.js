@@ -15,19 +15,18 @@ const BasketItem = ({ i }) => {
       <Card style={{ width: 150, cursor: 'pointer' }} className='p-2'>
         <Card.Img variant='top' src={i.img} />
         <div className='text-black-50 d-flex justify-content-between align-items-center'>
-          <div>Iphone</div>
-          <div>{i.price * quantity} BYN</div>
+          <div>{(i.price * quantity).toFixed(2)} BYN</div>
         </div>
         <div>{i.name}</div>
         <Row>
-          <Col>
+          <Col md={4}>
             <Button className='mt-2' variant="success" onClick={() => setCount(quantity + 1)}>+</Button>
           </Col>
-          <Col style={{ display: 'flex' }}>
+          <Col md={4} style={{ display: 'flex', justifyContent: 'center'}}>
             <p className='mt-2 mb-0'>{quantity}</p>
           </Col>
 
-          <Col>
+          <Col md={4}>
             <Button className='mt-2' variant="success" onClick={() => { quantity > 1 ? setCount(quantity - 1) : setCount(1) }}>-</Button>
           </Col>
 

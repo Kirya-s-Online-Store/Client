@@ -3,41 +3,33 @@ import { makeAutoObservable } from "mobx"
 export default class ProductStore {
     constructor() {
         this._types = [
-            {id: 1, name: 'Телефоны'},
-            {id: 2, name: 'Ноутбуки'}
+            {id: 0, name: 'All Types'}
         ]
 
         this._brands = [
-            {id: 1, name: 'Apple'},
-            {id: 2, name: 'Samsung'},
-            {id: 3, name: 'Honor'}
+            {id: 0, name: 'All Brands'}
         ]
 
-        this._products = [
-            {id: 1, name: 'iphone 13 pro max', price: 3100, img: "./img/product-imgs/Apple_iPhone-13.jpg"},
-            {id: 2, name: 'iphone 14 pro max', price: 3600, img: "./img/product-imgs/Apple_iPhone-13.jpg"},
-            {id: 3, name: 'iphone 12 pro max', price: 2500, img: "./img/product-imgs/Apple_iPhone-13.jpg"},
-            {id: 4, name: 'iphone 12 pro max', price: 2500, img: "./img/product-imgs/Apple_iPhone-13.jpg"},        
-            {id: 5, name: 'iphone 12 pro max', price: 2500, img: "./img/product-imgs/Apple_iPhone-13.jpg"}        
+        this._products = [     
         ]
 
         this._selectedType = {}
         this._selectedBrand = {}
         this._productsInBasket = [
-            {id: 1, name: 'iphone 13 pro max', price: 3100, img: "./img/product-imgs/Apple_iPhone-13.jpg", count: 1},
-            {id: 2, name: 'iphone 14 pro max', price: 3600, img: "./img/product-imgs/Apple_iPhone-13.jpg", count: 1},
-            {id: 3, name: 'iphone 12 pro max', price: 2500, img: "./img/product-imgs/Apple_iPhone-13.jpg", count: 1},
-            {id: 4, name: 'iphone 12 pro max', price: 2500, img: "./img/product-imgs/Apple_iPhone-13.jpg", count: 1},        
-            {id: 5, name: 'iphone 12 pro max', price: 2500, img: "./img/product-imgs/Apple_iPhone-13.jpg", count: 1} 
         ]
+        this._page = 0
+        this._totalCount= 0
+        this._limit = 10
         makeAutoObservable(this)
     }
 
     setTypes(types) {
+        
         this._types = types
     }
 
     setBrands(brands) {
+        
         this._brands = brands
     }
 
@@ -46,10 +38,12 @@ export default class ProductStore {
     }
 
     setSelectedType(type) {
+        this._page = 0
         this._selectedType = type
     }
 
     setSelectedBrand(brand) {
+        this._page = 0
         this._selectedBrand = brand
     }
 
@@ -60,17 +54,28 @@ export default class ProductStore {
     addProductInBasket(product) {
         product.count = 1
         this._productsInBasket.push(product);
-        console.log(this._productsInBasket)
     }
-    removeProductInBusket(id) {
-        
+    removeProductInBusket(id) {      
         this._productsInBasket = this._productsInBasket.filter((obj) => obj.id !== id);
-        console.log(id)
     }
 
     setCountProductInBasketById(id, count) {
         this._productsInBasket.find(x => x.id === id).count = count; 
     }
+
+    setPage(page) {
+        this._page = page
+    }
+
+    setTotalCount(count) {
+        this._totalCount = count
+    }
+
+    setLimit(limit) {
+        this._limit = limit
+    }
+
+
     
     get types() {
         return this._types
@@ -94,5 +99,17 @@ export default class ProductStore {
 
     get productsInBasket() {
         return this._productsInBasket;
+    }
+
+    get page() {
+        return this._page
+    }
+
+    get totalCount() {
+        return this._totalCount
+    }
+
+    get limit() {
+        return this._limit
     }
 }

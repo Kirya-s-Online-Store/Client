@@ -20,7 +20,7 @@ const Auth = observer(() => {
 
 
     const click = async () => {
-        
+        try {
             let data;
             if (isLogin) {
                 data = await login(email, password)
@@ -28,10 +28,17 @@ const Auth = observer(() => {
                 data = await registration(firstName, lastName, email, password)
             }
             console.log(data)
+            if (data.role == 'ROLE_ADMIN') {
+                user.setIsAdmin(true)
+            } else {
+                user.setIsAdmin(false)
+            }
             user.setUser(data)
             user.setIsAuth(true)
             navigate(SHOP_ROUTE)
-
+        } catch (e) {
+            alert(e.response.data.message)
+        }
     }
 
     return (
