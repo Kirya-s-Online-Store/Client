@@ -1,8 +1,12 @@
 import { $authHost, $host } from ".";
 import jwt_decode from "jwt-decode";
 
-export const createProduct = async (name, price, typeId, brandId, info) => {
-    const {data} = await $authHost.post('api/products', {name, price, typeId, brandId, info})
+export const createProduct = async (product) => {
+    const {data} = await $authHost.post('api/products/upload', {product}, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
     return data
 }
 

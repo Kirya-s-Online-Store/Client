@@ -30,7 +30,7 @@ function ProductPage() {
     <Container className='mt-5'>
       <Row>
         <Col md={6}>
-          <Image width={400} height={400} src={productItem.img}></Image>
+          <Image width={400} height={400} src={process.env.REACT_APP_API_URL + product.photoLink}></Image>
         </Col>
         <Col md={6}>
           <Card className='d-flex flex-column align-items-center justify-content-around text-align-center' style={{width: 'auto', height: 400, fontSize: 32}} border='primary'>

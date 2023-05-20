@@ -35,7 +35,32 @@ const CreateProduct = observer(({show, onHide}) => {
   }, [])
 
   const addProduct = ()=> {
-    createProduct(name, price, product.selectedType.id, product.selectedBrand.id, info).then(data =>  onHide())
+
+    const formData = new FormData()
+    const nameData = new FormData()
+    nameData.append('name',  name)
+    const infoData = new FormData()
+    infoData.append('name',  name)
+    const brandData = new FormData()
+    brandData.append('brandId', product.selectedBrand.id)
+
+    const typeData = new FormData()
+    typeData.append('typeId', product.selectedType.id)
+
+    const priceData = new FormData()
+    priceData.append('price', price)
+
+    const imgData = new FormData()
+    imgData.append('img', file)
+
+    formData.append('name',  name)
+    formData.append('info', JSON.stringify(info))
+    formData.append('brandId', product.selectedBrand.id)
+    formData.append('typeId', product.selectedType.id)
+    formData.append('price', price)
+    formData.append('img', file)
+    
+    createProduct(formData).then(data =>  onHide())
   }
 
   return (

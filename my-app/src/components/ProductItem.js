@@ -7,10 +7,11 @@ import { PRODUCT_ROUTE } from '../utils/consts'
 
 const ProductItem = ({product}) => {
   const navigate = useNavigate()
+  console.log(product.photoLink)
   return(
     <Col md={3} className = "mt-3" onClick={()=>navigate(PRODUCT_ROUTE + '/' + product.id)}>
         <Card style={{width: 150, cursor: 'pointer'}} border={'light'}>
-            <Image width={150} height={150} src={product.img}/>
+            <Image width={150} height={150} src={product.photoLink}/>
             <div className='text-black-50 d-flex justify-content-between align-items-center'>
                 <div>{product.brand.name}</div>
                 <div>{product.price} BYN</div>
